@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>News Article Summarizer</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            margin: 0;
+            padding: 0;
+        }
+
+        h1 {
+            text-align: center;
+            margin-top: 50px;
+            color: #333;
+        }
+
+        form {
+            width: 80%;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        label {
+            font-weight: bold;
+        }
+
+        textarea {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        input[type="submit"] {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+
+        h2 {
+            margin-top: 20px;
+            color: #333;
+        }
+
+        p {
+            line-height: 1.5;
+        }
+    </style>
+</head>
+<body>
+    <h1>News Article Summarizer</h1>
+    <form id="summarizerForm" method="post" action="/">
+        <label for="input_text">Input Text:</label><br>
+        <textarea id="input_text" name="input_text" rows="10" cols="50"></textarea><br>
+        <input type="submit" value="Summarize">
+    </form>
+    <br>
+    <div id="summaryContainer">
+        {% if summary %}
+            <h2>Summary:</h2>
+            <p id="summaryText">{{ summary }}</p>
+        {% endif %}
+    </div>
+
+    <script>
+        document.getElementById('summarizerForm').addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent default form submission
+            var formData = new FormData(this);
+            var inputText = formData.get('input_text');
+
+            // Mock AJAX request (replace with actual request to your server)
+            setTimeout(function() {
+                var summary = "This is a sample summary. Replace it with the actual summary received from the server.";
+                document.getElementById('summaryText').innerText = summary;
+            }, 1000); // Simulating a delay for demonstration purposes
+        });
+    </script>
+</body>
+</html>
